@@ -1,5 +1,4 @@
 <?php 
-include '../core/Url.php';
-include '../core/Controller.php';
-$url = new Url;
+session_start();
+include '../core/functions.php';
 $url->run();

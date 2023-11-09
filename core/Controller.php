@@ -8,4 +8,10 @@ class Controller
 	{
 		include '../app/views/'.$path.'.php';
 	}
+
+	public function model($model)
+	{
+		include '../app/models/'.$model.'.php';
+		return new $model;
+	}
 }

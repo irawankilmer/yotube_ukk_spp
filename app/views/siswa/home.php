@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title></title>
-</head>
-<body>
+<?php include '../app/views/templates/header.php'; ?>
 <h1>ini halaman <?= $path ?></h1>
-</body>
-</html>
+<?php include '../app/views/templates/footer.php'; ?>
