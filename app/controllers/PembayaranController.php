@@ -8,7 +8,7 @@ class PembayaranController extends Controller
 	{
 		checkIsNotLogin();
 
-		if ($_SESSION['level'] !== 'Admin' || $_SESSION['level'] !== 'Petugas') {
+		if ($_SESSION['level'] !== 'Admin' && $_SESSION['level'] !== 'Petugas') {
 			header("Location:http://localhost/ukk_spp/");
 		}
 	}

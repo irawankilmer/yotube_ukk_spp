@@ -29,17 +29,17 @@ class LoginController extends Controller
 				$_SESSION['login']		= true;
 				$_SESSION['username']	= $data['username'];
 				$_SESSION['level']		= $data['level'];
-				header("Location:http://localhost/ukk_spp/");
+				redirectTo('success', 'Selamat datang kembali!', '/');
 
 				if ($remember) {
 					createCookie($data['username']);
 				}
 
 			} else {
-				echo "Password tidak cocok!";
+				redirectTo('error', 'Maaf, Password salah!', '/login');
 			}
 		} else {
-			echo "Username tidak terdaftar!";
+			redirectTo('error', 'Maaf, Username tidak terdafat!', '/login');
 		}
 	}
 
@@ -51,6 +51,6 @@ class LoginController extends Controller
 			$username = $_SESSION['username'];
 			deleteCookie($username);
 		}
-		header("Location:http://localhost/ukk_spp/login");
+		redirectTo('success', 'Selamat, Anda berhasil logout!', '/login');
 	}
 }

@@ -47,8 +47,9 @@ function checkIsLogin()
 	if (isset($_COOKIE['key'])) {
 		$remember = $_COOKIE['key'];
 		$result = $db->mysqli->query("SELECT * FROM users WHERE remember_token = '$remember'");
+		$data = mysqli_fetch_assoc($result);
 
-		if (!empty($result)) {
+		if (!empty($data)) {
 			$_SESSION['login']		= true;
 			$_SESSION['username']	= $data['username'];
 			$_SESSION['level']		= $data['level'];
@@ -62,4 +63,32 @@ function deleteCookie($username)
 	$remember = hash('sha256', $username);
 	$db->mysqli->query("UPDATE users SET remember_token = '' WHERE username = '$username'");
 	setcookie('key', '', time() - 3600 * 24, '/');
+}
+
+function redirectTo($icon, $pesan, $tujuan)
+{
+	setcookie('alert', serialize([$icon, $pesan]), time() + 1, '/');
+	header("Location:http://localhost/ukk_spp".$tujuan);
+}
+
+function menuActive($menu)
+{
+	global $url;
+	$m = $url->getUrl();
+	foreach ($menu as $key) {
+		if ($m[0] == $key) {
+			return 'active';
+		}
+	}
+}
+
+function menuOpen($menu)
+{
+	global $url;
+	$m = $url->getUrl();
+	foreach ($menu as $key) {
+		if ($m[0] == $key) {
+			return 'menu-open';
+		}
+	}
 }
