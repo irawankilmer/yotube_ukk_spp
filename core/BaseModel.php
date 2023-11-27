@@ -42,7 +42,7 @@ class BaseModel
 
 		$this->mysqli->query("INSERT INTO $this->table_name($properties) VALUES($values)");
 
-		return $this->mysqli->affected_rows;
+		return $this->mysqli->insert_id;
 	}
 
 	public function getAll()
@@ -54,6 +54,36 @@ class BaseModel
 			$data[] = $row;
 		}
 
+		return $data;
+	}
+
+	public function getJoinAll($tables)
+	{
+		$joins = '';
+		foreach ($tables as $table) {
+			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".".$this->table_id." = ".$table.".".$this->table_id." ";
+		}
+		
+		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." ORDER BY ".$this->table_name.".".$this->table_id." DESC");
+
+		$data = [];
+		while ($row = $result->fetch_assoc()) {
+			$data[] = $row;
+		}
+
+		return $data;
+	}
+
+	public function getJoinOne($tables, $id)
+	{
+		$joins = '';
+		foreach ($tables as $table) {
+			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".".$this->table_id." = ".$table.".".$this->table_id." ";
+		}
+		
+		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." WHERE ".$this->table_name.".".$this->table_id." = ".$id);
+
+		$data = $result->fetch_assoc();
 		return $data;
 	}
 

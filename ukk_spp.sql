@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Nov 2023 pada 05.03
+-- Waktu pembuatan: 27 Nov 2023 pada 16.17
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.2.4
 
@@ -114,7 +114,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `level`, `gambar`, `remember_token`) VALUES
-(1, 'admin', '$2y$10$DaG4GiQ6XROcDZpb8ksY2.zmhStBhpfbOx8RQlpMP.01oxHGwJQ82', 'Admin', NULL, '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
+(1, 'admin', '$2y$10$DaG4GiQ6XROcDZpb8ksY2.zmhStBhpfbOx8RQlpMP.01oxHGwJQ82', 'Admin', 'avatar4.png', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
 (2, 'petugas', '$2y$10$JnBxHCZazFiJrzWTIIhmJutgYllqwCDksB88rsndRYPW5/IcOT4kO', 'Petugas', NULL, NULL),
 (3, 'siswa', '$2y$10$ksHUbudGCzfdbl1WTBV9K.yvqivrJrsUO7frAtpcLGQ5W/uQD1OFO', 'Siswa', NULL, NULL);
 
@@ -187,7 +187,7 @@ ALTER TABLE `pembayaran`
 -- AUTO_INCREMENT untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa`
@@ -205,7 +205,7 @@ ALTER TABLE `spp`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

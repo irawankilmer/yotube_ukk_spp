@@ -29,6 +29,7 @@ class LoginController extends Controller
 				$_SESSION['login']		= true;
 				$_SESSION['username']	= $data['username'];
 				$_SESSION['level']		= $data['level'];
+				$_SESSION['gambar']		= $data['gambar'];
 				redirectTo('success', 'Selamat datang kembali!', '/');
 
 				if ($remember) {

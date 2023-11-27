@@ -92,3 +92,12 @@ function menuOpen($menu)
 		}
 	}
 }
+
+function usernameCheck($username)
+{
+	global $db;
+
+	$result = $db->mysqli->query("SELECT * FROM users WHERE username = '$username'");
+
+	return $result->num_rows;
+}
