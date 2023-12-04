@@ -40,9 +40,9 @@ class SppController extends Controller
 	{
 		if ($this->model('Spp')->update($id) > 0) {
 			redirectTo('success', 'Selamat, Data SPP berhasil di edit!', '/spp');
+		} else {
+			redirectTo('info', 'Tidak ada perubahan data SPP!', '/spp');
 		}
-
-		redirectTo('info', 'Tidak ada perubahan data SPP!', '/spp');
 	}
 
 	public function delete($id)

@@ -15,7 +15,7 @@ class PetugasController extends Controller
 	
 	public function index()
 	{
-		$data = $this->model('User')->getJoinAll(['petugas']);
+		$data = $this->model('Petugas')->getJoinAll(['users'], "WHERE NOT petugas.id_users = ".$_SESSION['id_users']);
 		$this->view('petugas/home', $data);
 	}
 
@@ -38,7 +38,7 @@ class PetugasController extends Controller
 			$user_id = $this->model('User')->create($users);
 
 			$petugas = [
-				'id_user'			=> $user_id,
+				'id_users'			=> $user_id,
 				'nama_petugas'		=> $_POST['nama_petugas'],
 				'no_hp_petugas'		=> $_POST['no_hp_petugas'],
 				'alamat_petugas'	=> $_POST['alamat_petugas']
@@ -54,7 +54,7 @@ class PetugasController extends Controller
 
 	public function detail($id)
 	{
-		$data = $this->model('User')->getJoinOne(['petugas'], $id);
+		$data = $this->model('Petugas')->getJoinOne(['users'], $id);
 		$this->view('petugas/detail', $data);
 	}
 

@@ -28,9 +28,9 @@
                   			<img height="50" src="<?= urlTo('/public/img/'.$petugas['gambar']); ?>" class="img-circle elevation-2">
                   		</td>
                   		<td>
-                  			<a href="<?= urlTo('/petugas/'.$petugas['id_user'].'/detail') ?>" class="btn btn-info">Detail</a>
-                  			<a href="<?= urlTo('/petugas/'.$petugas['id_user'].'/edit') ?>" class="btn btn-warning">Edit</a>
-                  			<a href="<?= urlTo('/petugas/'.$petugas['id_user'].'/delete') ?>" class="btn btn-danger">Hapus</a>
+                  			<a href="<?= urlTo('/petugas/'.$petugas['id_petugas'].'/detail') ?>" class="btn btn-info">Detail</a>
+                  			<a href="<?= urlTo('/petugas/'.$petugas['id_users'].'/edit') ?>" class="btn btn-warning">Edit</a>
+                  			<a href="<?= urlTo('/petugas/'.$petugas['id_users'].'/delete') ?>" class="btn btn-danger">Hapus</a>
                   		</td>
                   	</tr>
                   	<?php $no++; ?>

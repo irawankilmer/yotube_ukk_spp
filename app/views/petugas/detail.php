@@ -15,14 +15,16 @@
 
                 <p class="text-muted text-center"><?= $data['level']; ?></p>
 
-                <a href="<?= urlTo('/petugas') ?>" class="btn btn-warning btn-block"><b>Kembali</b></a>
+                
 
-                <form action="<?= urlTo('/petugas/'.$data['id_user'].'/reset'); ?>" method="post">
+                <form action="<?= urlTo('/petugas/'.$data['id_users'].'/reset'); ?>" method="post">
                 	<div class="form-group">
                 		<input type="hidden" name="password" value="<?= password_hash($data['level'].'123', PASSWORD_DEFAULT); ?>">
                 		<button type="submit" class="btn btn-info btn-block">Reset Password</button>
                 	</div>
                 </form>
+
+                <a href="<?= urlTo('/petugas') ?>" class="btn btn-warning btn-block"><b>Kembali</b></a>
               </div>
               <!-- /.card-body -->
             </div>

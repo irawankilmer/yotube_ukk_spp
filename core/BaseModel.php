@@ -57,14 +57,14 @@ class BaseModel
 		return $data;
 	}
 
-	public function getJoinAll($tables)
+	public function getJoinAll($tables, $where = null)
 	{
 		$joins = '';
 		foreach ($tables as $table) {
-			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".".$this->table_id." = ".$table.".".$this->table_id." ";
+			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".id_".$table." = ".$table.".id_".$table." ";
 		}
 		
-		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." ORDER BY ".$this->table_name.".".$this->table_id." DESC");
+		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." $where ORDER BY ".$this->table_name.".".$this->table_id." DESC");
 
 		$data = [];
 		while ($row = $result->fetch_assoc()) {
@@ -74,14 +74,15 @@ class BaseModel
 		return $data;
 	}
 
-	public function getJoinOne($tables, $id)
+	public function getJoinOne($tables, $id, $where = null)
 	{
 		$joins = '';
 		foreach ($tables as $table) {
-			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".".$this->table_id." = ".$table.".".$this->table_id." ";
+			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".id_".$table." = ".$table.".id_".$table." ";
 		}
+		$wh = $where == null ? " WHERE ".$this->table_name.".".$this->table_id." = ".$id : $where;
 		
-		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." WHERE ".$this->table_name.".".$this->table_id." = ".$id);
+		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." ".$wh);
 
 		$data = $result->fetch_assoc();
 		return $data;

@@ -37,7 +37,6 @@
       timer:2000
     });
   </script>
-  <?php setcookie('alert', '', time() - 1); ?>
 <?php endif ?>
 <script>
   $(function () {

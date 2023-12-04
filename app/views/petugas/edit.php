@@ -2,7 +2,7 @@
 <div class="col-md-6">
           <div class="card card-primary">
             <div class="card-body">
-            	<form action="<?= urlTo('/petugas/'.$data['id_user'].'/update'); ?>" method="post">
+            	<form action="<?= urlTo('/petugas/'.$data['id_users'].'/update'); ?>" method="post">
              <div class="form-group">
                 <label for="level">level</label>
                 <select id="level" name="level" class="form-control custom-select">

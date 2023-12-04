@@ -101,3 +101,19 @@ function usernameCheck($username)
 
 	return $result->num_rows;
 }
+
+function cekNisn($type, $value, $not = null)
+{
+	global $db;
+	$result = $db->mysqli->query("SELECT * FROM siswa WHERE $not $type = '$value'");
+
+	return $result->fetch_assoc();
+}
+
+function cekpembayaran($id_siswa, $id_spp)
+{
+	global $db;
+	$result = $db->mysqli->query("SELECT * FROM pembayaran INNER JOIN siswa ON pembayaran.id_siswa = siswa.id_siswa WHERE pembayaran.id_siswa = $id_siswa AND pembayaran.id_spp = $id_spp ");
+
+	return $result->fetch_assoc();
+}
