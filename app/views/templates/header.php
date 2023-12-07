@@ -38,7 +38,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="<?= urlTo('/public/img/'.$_SESSION['gambar']); ?>" class="img-circle elevation-2" alt="User Image">
+          <img src="<?= urlTo('/public/img/'.getProfil()['gambar']); ?>" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="<?= urlTo('/profil'); ?>" class="d-block"><?= $_SESSION['username']; ?></a>
@@ -55,6 +55,7 @@
             </a>
           </li>
 
+          <?php if ($_SESSION['level'] === 'Admin'): ?>
           <li class="nav-item <?= menuOpen(['spp', 'kelas', 'siswa', 'petugas']); ?>">
             <a href="#" class="nav-link <?= menuActive(['spp', 'kelas', 'siswa', 'petugas']); ?>">
               <i class="nav-icon fas fa-save"></i>
@@ -90,12 +91,16 @@
               </li>
             </ul>
           </li>
+          <?php endif ?>
+
+          <?php if ($_SESSION['level'] === 'Admin' || $_SESSION['level'] === 'Petugas'): ?>
           <li class="nav-item">
             <a href="<?= urlTo('/pembayaran') ?>" class="nav-link <?= menuActive(['pembayaran']); ?>">
               <i class="nav-icon fas fa-money-check"></i>
               <p>Pembayaran</p>
             </a>
           </li>
+          <?php endif ?>
 
           <li class="nav-item">
             <a href="<?= urlTo('/login/logout') ?>" class="nav-link">

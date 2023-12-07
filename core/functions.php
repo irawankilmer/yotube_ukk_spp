@@ -117,3 +117,19 @@ function cekpembayaran($id_siswa, $id_spp)
 
 	return $result->fetch_assoc();
 }
+
+function getProfil()
+{
+	global $db;
+	$result = $db->mysqli->query("SELECT * FROM users WHERE id_users = ".$_SESSION['id_users']);
+
+	return $result->fetch_assoc();
+}
+
+function hitung($table)
+{
+	global $db;
+	$result = $db->mysqli->query("SELECT * FROM ".$table);
+
+	return $result->num_rows;
+}

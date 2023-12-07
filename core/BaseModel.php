@@ -63,7 +63,7 @@ class BaseModel
 		foreach ($tables as $table) {
 			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".id_".$table." = ".$table.".id_".$table." ";
 		}
-		
+
 		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." $where ORDER BY ".$this->table_name.".".$this->table_id." DESC");
 
 		$data = [];
@@ -81,7 +81,6 @@ class BaseModel
 			$joins .= "INNER JOIN ".$table." ON ".$this->table_name.".id_".$table." = ".$table.".id_".$table." ";
 		}
 		$wh = $where == null ? " WHERE ".$this->table_name.".".$this->table_id." = ".$id : $where;
-		
 		$result = $this->mysqli->query("SELECT * FROM ".$this->table_name." ".$joins." ".$wh);
 
 		$data = $result->fetch_assoc();

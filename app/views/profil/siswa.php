@@ -8,20 +8,36 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="<?= urlTo('/public/img/'.$data['gambar']); ?>">
+                       src="<?= urlTo('/public/img/'.$data['profil']['gambar']); ?>">
                 </div>
 
-                <h3 class="profile-username text-center"><?= $data['nama_petugas']; ?></h3>
+                <h3 class="profile-username text-center"><?= $data['profil']['nama_siswa']; ?></h3>
 
-                <p class="text-muted text-center"><?= $data['level']; ?></p>
+                <p class="text-muted text-center"><?= $data['profil']['nama_kelas']; ?></p>
 
                 <ul class="list-group list-group-unbordered mb-3">
                   <li class="list-group-item">
-                    <b>Alamat</b> <label class="badge badge-info float-right"><?= $data['alamat_petugas']; ?></label>
+                    <b>Spp Aktif</b> <label class="badge badge-info float-right"><?= $data['profil']['tahun']."(Rp. ".$data['profil']['nominal'].")"; ?></label>
                   </li>
 
                   <li class="list-group-item">
-                    <b>Nomor HP</b> <label class="badge badge-info float-right"><?= $data['no_hp_petugas']; ?></label>
+                    <b>Nisn</b> <label class="badge badge-info float-right"><?= $data['profil']['nisn']; ?></label>
+                  </li>
+
+                  <li class="list-group-item">
+                    <b>Nis</b> <label class="badge badge-info float-right"><?= $data['profil']['nis']; ?></label>
+                  </li>
+
+                  <li class="list-group-item">
+                    <b>Nama Lengkap</b> <label class="badge badge-info float-right"><?= $data['profil']['nama_siswa']; ?></label>
+                  </li>
+
+                  <li class="list-group-item">
+                    <b>Alamat</b> <label class="badge badge-info float-right"><?= $data['profil']['alamat_siswa']; ?></label>
+                  </li>
+
+                  <li class="list-group-item">
+                    <b>Nomor HP</b> <label class="badge badge-info float-right"><?= $data['profil']['no_telepon_siswa']; ?></label>
                   </li>
                 </ul>
               </div>
@@ -35,14 +51,54 @@
             <div class="card">
               <div class="card-header p-2">
                 <ul class="nav nav-pills">
-                  <li class="nav-item"><a class="nav-link active" href="#profil" data-toggle="tab">Foto Profil</a></li>
+                  <li class="nav-item"><a class="nav-link active" href="#spp" data-toggle="tab">My SPP</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#profil" data-toggle="tab">Foto Profil</a></li>
                   <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Ganti Password</a></li>
                 </ul>
               </div><!-- /.card-header -->
               <div class="card-body">
                 <div class="tab-content">
+                	<div class="active tab-pane" id="spp">
+                		<table id="example1" class="table table-bordered table-striped">
+                  <thead>
+                  <tr>
+                    <th>SPP</th>
+                    <th>Bulan</th>
+                    <th>Status</th>
+                    <th>Petugas</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                   <?php foreach ($data['pembayaran'] as $spp): ?>
+                   	<tr>
+                   		<td><?= $spp['tahun']; ?></td>
+                   		<td><?= $spp['bulan_dibayar']; ?></td>
+                   		<td>
+                   			<?php if ($spp['jumlah_bayar'] === null): ?>
+                   				<label class="badge btn-danger">Belum dibayar!</label>
+                   			<?php elseif($spp['jumlah_bayar'] >= 0 && $spp['jumlah_bayar'] < $spp['nominal']): ?>
+                   				<label class="badge btn-warning">Belum lunas (Sisa [Rp. <?= $spp['nominal'] - $spp['jumlah_bayar']; ?>])</label>
+                   			<?php elseif($spp['jumlah_bayar'] === $spp['nominal']): ?>
+                   				<label class="badge btn-info">Lunas!</label>
+                   			<?php endif ?>
+                   		</td>
+                   		<td><?= $spp['nama_petugas']; ?></td>
+                   	</tr>
+                   <?php endforeach ?>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+                    <th>SPP</th>
+                    <th>Bulan</th>
+                    <th>Status</th>
+                    <th>Petugas</th>
+                  </tr>
+                  </tfoot>
+                </table>
+                	</div>
+
                   <!-- /.tab-pane -->
-                  <div class="active tab-pane" id="profil">
+                  <div class="tab-pane" id="profil">
                     <form action="<?= urlTo('/profil/foto'); ?>" method="post" enctype="multipart/form-data">
                     	<div class="form-group">
                     		<div class="custom-file">

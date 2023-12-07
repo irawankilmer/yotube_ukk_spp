@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2023 at 10:53 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 07 Des 2023 pada 07.44
+-- Versi server: 10.4.28-MariaDB
+-- Versi PHP: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `kelas`
+-- Struktur dari tabel `kelas`
 --
 
 CREATE TABLE `kelas` (
@@ -34,7 +34,7 @@ CREATE TABLE `kelas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `kelas`
+-- Dumping data untuk tabel `kelas`
 --
 
 INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `kompetensi_keahlian`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `kelas` (`id_kelas`, `nama_kelas`, `kompetensi_keahlian`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pembayaran`
+-- Struktur dari tabel `pembayaran`
 --
 
 CREATE TABLE `pembayaran` (
@@ -59,21 +59,21 @@ CREATE TABLE `pembayaran` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `pembayaran`
+-- Dumping data untuk tabel `pembayaran`
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `id_petugas`, `id_siswa`, `id_spp`, `tgl_bayar`, `bulan_dibayar`, `tahun_dibayar`, `jumlah_bayar`) VALUES
-(37, 3, 5, 2, NULL, 'Januari', NULL, NULL),
-(38, 3, 5, 2, NULL, 'Februari', NULL, NULL),
+(37, 6, 5, 2, NULL, 'Januari', NULL, NULL),
+(38, 6, 5, 2, NULL, 'Februari', NULL, NULL),
 (39, 3, 5, 2, NULL, 'Maret', NULL, NULL),
 (40, 3, 5, 2, NULL, 'April', NULL, NULL),
 (41, 3, 5, 2, NULL, 'Mei', NULL, NULL),
 (42, 3, 5, 2, NULL, 'Juni', NULL, NULL),
-(43, 3, 5, 2, NULL, 'Juli', NULL, 55000),
+(43, 3, 5, 2, NULL, 'Juli', NULL, 45000),
 (44, 3, 5, 2, NULL, 'Agustus', NULL, NULL),
 (45, 3, 5, 2, NULL, 'Septembe', NULL, NULL),
 (46, 3, 5, 2, NULL, 'Oktober', NULL, NULL),
-(47, 3, 5, 2, NULL, 'November', NULL, 45000),
+(47, 6, 5, 2, '2023-12-07', 'November', '2023', 55000),
 (48, 3, 5, 2, NULL, 'Desember', NULL, NULL),
 (49, 3, 5, 3, NULL, 'Januari', NULL, NULL),
 (50, 3, 5, 3, NULL, 'Februari', NULL, NULL),
@@ -91,7 +91,7 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `id_petugas`, `id_siswa`, `id_spp`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `petugas`
+-- Struktur dari tabel `petugas`
 --
 
 CREATE TABLE `petugas` (
@@ -103,16 +103,17 @@ CREATE TABLE `petugas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `petugas`
+-- Dumping data untuk tabel `petugas`
 --
 
 INSERT INTO `petugas` (`id_petugas`, `id_users`, `nama_petugas`, `no_hp_petugas`, `alamat_petugas`) VALUES
-(3, 1, 'Pak Wahyu', '234234', 'Cibatu');
+(3, 1, 'Pak Wahyu', '234234', 'Cibatu'),
+(6, 13, 'Bu Noneng', '234234', 'Nangkelan');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `siswa`
+-- Struktur dari tabel `siswa`
 --
 
 CREATE TABLE `siswa` (
@@ -128,7 +129,7 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `siswa`
+-- Dumping data untuk tabel `siswa`
 --
 
 INSERT INTO `siswa` (`id_siswa`, `id_users`, `id_spp`, `id_kelas`, `nisn`, `nis`, `nama_siswa`, `alamat_siswa`, `no_telepon_siswa`) VALUES
@@ -137,7 +138,7 @@ INSERT INTO `siswa` (`id_siswa`, `id_users`, `id_spp`, `id_kelas`, `nisn`, `nis`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `spp`
+-- Struktur dari tabel `spp`
 --
 
 CREATE TABLE `spp` (
@@ -147,7 +148,7 @@ CREATE TABLE `spp` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `spp`
+-- Dumping data untuk tabel `spp`
 --
 
 INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`) VALUES
@@ -157,7 +158,7 @@ INSERT INTO `spp` (`id_spp`, `tahun`, `nominal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
@@ -170,27 +171,28 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users`
 --
 
 INSERT INTO `users` (`id_users`, `username`, `password`, `level`, `gambar`, `remember_token`) VALUES
-(1, 'admin', '$2y$10$DaG4GiQ6XROcDZpb8ksY2.zmhStBhpfbOx8RQlpMP.01oxHGwJQ82', 'Admin', 'avatar4.png', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'),
+(1, 'admin', '$2y$10$DaG4GiQ6XROcDZpb8ksY2.zmhStBhpfbOx8RQlpMP.01oxHGwJQ82', 'Admin', '656f33ee4d2ea.jpeg', ''),
 (2, 'petugas', '$2y$10$JnBxHCZazFiJrzWTIIhmJutgYllqwCDksB88rsndRYPW5/IcOT4kO', 'Petugas', NULL, NULL),
 (3, 'siswa', '$2y$10$ksHUbudGCzfdbl1WTBV9K.yvqivrJrsUO7frAtpcLGQ5W/uQD1OFO', 'Siswa', NULL, NULL),
-(11, '123456', '$2y$10$NGCshOc.oaSnTfMSszEuxePTnoiXNcm1mre1w4ohM936IsApr1Gwu', 'Siswa', 'avatar4.png', NULL);
+(11, '123456', '$2y$10$tKCXeTRdPHyqiKLtHP8Rb.oyjsGXoJDWU98q3p.YUa1H7dCcnRg8S', 'Siswa', '656f49b1d367f.jpeg', NULL),
+(13, 'noneng123', '$2y$10$V3W5si9selJZDi74i7pKyOM6nKOmiXSySa1Yvu.sOnEjDCsg8wUkm', 'Petugas', 'user1-128x128.jpg', NULL);
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `kelas`
+-- Indeks untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   ADD PRIMARY KEY (`id_kelas`);
 
 --
--- Indexes for table `pembayaran`
+-- Indeks untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD PRIMARY KEY (`id_pembayaran`),
@@ -199,14 +201,14 @@ ALTER TABLE `pembayaran`
   ADD KEY `id_spp` (`id_spp`);
 
 --
--- Indexes for table `petugas`
+-- Indeks untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
   ADD PRIMARY KEY (`id_petugas`),
   ADD KEY `id_user` (`id_users`);
 
 --
--- Indexes for table `siswa`
+-- Indeks untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD PRIMARY KEY (`id_siswa`),
@@ -217,76 +219,76 @@ ALTER TABLE `siswa`
   ADD KEY `id_kelas` (`id_kelas`);
 
 --
--- Indexes for table `spp`
+-- Indeks untuk tabel `spp`
 --
 ALTER TABLE `spp`
   ADD PRIMARY KEY (`id_spp`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id_users`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `kelas`
+-- AUTO_INCREMENT untuk tabel `kelas`
 --
 ALTER TABLE `kelas`
   MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `pembayaran`
+-- AUTO_INCREMENT untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   MODIFY `id_pembayaran` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
--- AUTO_INCREMENT for table `petugas`
+-- AUTO_INCREMENT untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
-  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_petugas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `siswa`
+-- AUTO_INCREMENT untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `spp`
+-- AUTO_INCREMENT untuk tabel `spp`
 --
 ALTER TABLE `spp`
   MODIFY `id_spp` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_users` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `pembayaran`
+-- Ketidakleluasaan untuk tabel `pembayaran`
 --
 ALTER TABLE `pembayaran`
   ADD CONSTRAINT `pembayaran_ibfk_1` FOREIGN KEY (`id_petugas`) REFERENCES `petugas` (`id_petugas`) ON DELETE CASCADE,
   ADD CONSTRAINT `pembayaran_ibfk_2` FOREIGN KEY (`id_siswa`) REFERENCES `siswa` (`id_siswa`) ON DELETE CASCADE;
 
 --
--- Constraints for table `petugas`
+-- Ketidakleluasaan untuk tabel `petugas`
 --
 ALTER TABLE `petugas`
   ADD CONSTRAINT `petugas_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_users`) ON DELETE CASCADE;
 
 --
--- Constraints for table `siswa`
+-- Ketidakleluasaan untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
   ADD CONSTRAINT `siswa_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_users`) ON DELETE CASCADE,
